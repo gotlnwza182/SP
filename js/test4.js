@@ -27,36 +27,7 @@ var red = document.getElementById('red');
 var blue = document.getElementById('blue');
 var green = document.getElementById('green');
 var hex = document.getElementById('hex');
-/**-------------WEBSOCKET---------------- */
-var gateway = `ws://${window.location.hostname}/ws`;
-var websocket;
-window.addEventListener('load', onload);
 
-function onload(event) {
-    initWebSocket();
-}
-
-function getValues(){
-    websocket.send("getValues");
-}
-
-function initWebSocket() {
-    console.log('Trying to open a WebSocket connection…');
-    websocket = new WebSocket(gateway);
-    websocket.onopen = onOpen;
-    websocket.onclose = onClose;
-}
-
-function onOpen(event) {
-    console.log('Connection opened');
-    getValues();
-}
-
-function onClose(event) {
-    console.log('Connection closed');
-    setTimeout(initWebSocket, 2000);
-}
-/**-------------WEBSOCKET---------------- */
 function ColorPicker() {
   this.addDefaultSwatches();
   createShadeSpectrum();
@@ -64,21 +35,17 @@ function ColorPicker() {
 };
 
 ColorPicker.prototype.defaultSwatches = [
-  '#FF0012',
-  '#FF7F00',
-  '#FFFF00',
-  '#00FF00', 
-  '#00D0FF', 
-  '#0000FF', 
-  '#7B00FF', 
-  '#FF00C3', 
-  '#9F0000', 
-  '#996100', 
-  '#CCFF00', 
-  '#009400', 
-  '#00FF95', 
-  '#000086', 
-  '#44008c', 
+  '#FFFFFF',
+  '#FFFB0D',
+  '#0532FF',
+  '#FF9300', 
+  '#00F91A', 
+  '#FF2700', 
+  '#000000', 
+  '#686868', 
+  '#EE5464', 
+  '#D27AEE', 
+  '#5BA8C4', 
   '#E64AA9'
 ];
 
@@ -180,18 +147,6 @@ function setColorValues(color) {
   green.value = rgbValues.g;
   blue.value = rgbValues.b;
   hex.value = hexValue;
-
-  console.log(rgbValues);
-  console.log(red.value);
-  console.log(green.value);
-  console.log(blue.value);
-  console.log("r: "+red.value);
-  console.log("g: "+green.value);
-  console.log("b: "+blue.value);
-  websocket.send("r:"+red.value);
-  websocket.send("g:"+green.value);
-  websocket.send("b:"+blue.value);
-  
 };
 /*if want to change color to color selected do these following steps
 1. declare id or class (better id or both) to the things u want to do
@@ -216,8 +171,6 @@ function updateHueCursor(y) {
 function updateSpectrumCursor(x, y) {
   spectrumCursor.style.left = x + 'px';
   spectrumCursor.style.top = y + 'px';
-  spectrumCursor.style.right = x + 'px';
-  spectrumCursor.style.bottom = y + 'px';
 };
 
 var startGetSpectrumColor = function(e) {
@@ -311,3 +264,21 @@ window.addEventListener('resize', function() {
 });
 
 new ColorPicker();
+/** console.log(rgbValues);
+  console.log(red.value);
+  console.log(green.value);
+  console.log(blue.value);
+  console.log("r: "+red.value);
+  console.log("g: "+green.value);
+  console.log("b: "+blue.value);
+  websocket.send(rgbValues);
+  websocket.send("r: "+red.value);
+  websocket.send("g: "+green.value);
+  websocket.send("b: "+blue.value); */
+  /**
+  var rgbid = element.id.charAt(element.id.length0);
+  var rgbvaluenumber = document.getElementById(element.id).value;
+  document.getElementById(rgbid).innerHTML = rgbvaluenumber;
+  console.log(rgbvaluenumber);
+  console.log(rgbid+": "+red.value); 
+  */

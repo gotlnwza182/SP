@@ -1,0 +1,46 @@
+.form-control-primary {
+  margin: 10px;
+  opacity: 0.2;
+  border-radius: 2px;
+}
+.sidebar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 100;
+  padding: 70px 0 0 10px;
+  border-right: 1px solid #d3d3d3;
+}
+
+.left-sidebar {
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 70px);
+}
+.sidebar-nav li.sidebar-nav-item {
+  padding-right: 10px;
+}
+
+.sidebar-nav li .sidebar-nav-link {
+  color: #333;
+  font-weight: 500;
+}
+.sidebar-nav li.sidebar-nav-item a.sidebar-nav-link:hover {
+  background-color: #555;
+  border-radius: 3px;
+  color: white;
+}
+/* hidden nav bar 
+.sidebar-nav li.sidebar-nav-item .hidden-nav {
+  display: ;
+  background-color: #555;
+  border-radius: 3px;
+  color: white;
+}*/
+main {
+  padding-top: 90px;
+}
+main .card {
+  margin-bottom: 20px;
+}

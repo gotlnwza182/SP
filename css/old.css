@@ -1,0 +1,58 @@
+#top {
+  margin: 0;
+}
+#top #prof ul {
+  background-color: chartreuse;
+}
+#top #prof ul li {
+  list-style: none;
+}
+#top #prof ul li a.prof-name {
+  margin-left: 500px;
+  background-color: blue;
+}
+#top #prof ul li a.icon {
+  margin-left: 500px;
+  background-color: blue;
+}
+
+#top #prof a.Signup-btn {
+  margin-top: 10px;
+}
+
+#navbar {
+  margin: 0;
+}
+
+#main {
+  margin: 0;
+}
+
+#main .menu li {
+  list-style: none;
+  text-decoration: none;
+}
+#main .fill-box {
+  padding: 2%;
+  padding-left: 29%;
+  height: 400px;
+  align-items: center;
+}
+#main .fill-box .login-h1 {
+  padding-top: 3%;
+  padding-bottom: 3%;
+  padding-left: 20%;
+}
+#main .btnp {
+  padding-top: 3%;
+  padding-left: 18%;
+}
+#main a.g2sngup p {
+  padding-top: 2%;
+  padding-left: 22%;
+}
+
+#footer {
+  margin: 0;
+  background-color: #555;
+}

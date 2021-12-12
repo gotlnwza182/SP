@@ -2,7 +2,6 @@ var addSwatch = document.getElementById('add-swatch');
 var modeToggle = document.getElementById('mode-toggle');
 var swatches = document.getElementsByClassName('default-swatches')[0];
 var colorIndicator = document.getElementById('color-indicator');
-var HeadColorText = document.getElementById('HFC');
 var userSwatches = document.getElementById('user-swatches');
 
 var spectrumCanvas = document.getElementById('spectrum-canvas');
@@ -63,22 +62,19 @@ function ColorPicker() {
   createHueSpectrum();
 };
 
+
 ColorPicker.prototype.defaultSwatches = [
-  '#FF0012',
-  '#FF7F00',
-  '#FFFF00',
-  '#00FF00', 
-  '#00D0FF', 
-  '#0000FF', 
-  '#7B00FF', 
-  '#FF00C3', 
-  '#9F0000', 
-  '#996100', 
-  '#CCFF00', 
-  '#009400', 
-  '#00FF95', 
-  '#000086', 
-  '#44008c', 
+  '#FFFFFF',
+  '#FFFB0D',
+  '#0532FF',
+  '#FF9300', 
+  '#00F91A', 
+  '#FF2700', 
+  '#000000', 
+  '#686868', 
+  '#EE5464', 
+  '#D27AEE', 
+  '#5BA8C4', 
   '#E64AA9'
 ];
 
@@ -96,6 +92,7 @@ function createSwatch(target, color) {
   refreshElementRects();
 };
 
+/**Swatch lenght i think add the limit here */
 ColorPicker.prototype.addDefaultSwatches = function() {
   for( var i = 0; i < this.defaultSwatches.length; ++i) {
     createSwatch(swatches, this.defaultSwatches[i]);
@@ -182,15 +179,14 @@ function setColorValues(color) {
   hex.value = hexValue;
 
   console.log(rgbValues);
-  console.log(red.value);
-  console.log(green.value);
-  console.log(blue.value);
-  console.log("r: "+red.value);
-  console.log("g: "+green.value);
-  console.log("b: "+blue.value);
-  websocket.send("r:"+red.value);
+  console.log("rgbValues:"+"r"+red.value+"g"+green.value+"b"+blue.value+"a1");
+  console.log("r:"+red.value);
+  console.log("g:"+green.value);
+  console.log("b:"+blue.value);
+  websocket.send("rgbValues:"+"r"+red.value+"g"+green.value+"b"+blue.value+"a1");
+/*websocket.send("r:"+red.value);
   websocket.send("g:"+green.value);
-  websocket.send("b:"+blue.value);
+  websocket.send("b:"+blue.value);*/
   
 };
 /*if want to change color to color selected do these following steps
@@ -203,11 +199,9 @@ function setCurrentColor(color) {
   color = tinycolor(color);
   currentColor = color;
   colorIndicator.style.backgroundColor = color;
-  HeadColorText.style.color = color;
   spectrumCursor.style.backgroundColor = color;
   hueCursor.style.backgroundColor = 'hsl(' + color.toHsl().h +',100%, 50%)';
 };
-/**Test cursor color change */
 
 function updateHueCursor(y) {
   hueCursor.style.top = y + "px";
@@ -216,8 +210,6 @@ function updateHueCursor(y) {
 function updateSpectrumCursor(x, y) {
   spectrumCursor.style.left = x + 'px';
   spectrumCursor.style.top = y + 'px';
-  spectrumCursor.style.right = x + 'px';
-  spectrumCursor.style.bottom = y + 'px';
 };
 
 var startGetSpectrumColor = function(e) {
